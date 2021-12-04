@@ -1,13 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 html, body {
-    --sidebar_color: #23272a;
-    --channel-color: #34393d;
-    --content-color: #3f4245;
-    --profile-color: #23272A;
+    --sidebar_color: #202225;
+    --channel-color: #2f3136;
+    --content-color: #36393f;
+    --profile-color: #292b2f;
+
+    --channels-text-color: #8e9297;
+    --channels-size: 240px;
 
     min-height: 100% !important;
     height: 100%;
 }
+
+/*https://gist.github.com/LaksCastro/abda0ba3e607927bc21d2f7112aa175f*/
+    ::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #4a4d52;
+        border: 2px solid #282a2d;
+        border-radius: 10px;
+    }
+/**/
 
 body {
     background: rgb(19, 19, 19);
@@ -28,8 +54,7 @@ body {
 
 .top {
     z-index: 2;
-    box-shadow: 0 5px 4px var(--sidebar_color);
-
+    box-shadow: 0 2px 4px var(--sidebar_color);
 }
 .grid-item {
     display: flex;
@@ -48,24 +73,34 @@ body {
 .channels {
     background-color: var(--channel-color);
 }
+.channels:not(.top) {
+    overflow: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-right: 12px;
+    color: var(--channels-text-color);
+
+}
 .content {
     background-color: var(--content-color);
 }
-.profiles {
+.profile {
     overflow: hidden;
     position: fixed;
     bottom: 0;
     background-color: var(--profile-color);
+    width: var(--channels-size);
+    height: 52px;
+    border-top: 2px solid var(--content-color);
 }
 .second-grid {
     display: grid;
     gap: 0;
     height: 100%;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: var(--channels-size) 1fr;
     grid-template-rows: 48px 1fr;
 }
-/*
-.basic-grid .item {
+
+.channelitem {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +115,7 @@ body {
     border-radius: 4px;
     transition: all 500ms;
     overflow: hidden;
-}*/
+}
 
 .card:hover {
     box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
