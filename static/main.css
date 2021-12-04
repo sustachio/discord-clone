@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+html, body {
+    --sidebar_color: #23272a;
+    --channel-color: #34393d;
+    --content-color: #3f4245;
+    --profile-color: #23272A;
+
+    min-height: 100% !important;
+    height: 100%;
+}
+
+body {
+    background: rgb(19, 19, 19);
+    color: #fff;
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main-grid {
+    display: grid;
+    gap: 0;
+    height: 100%;
+    grid-template-columns: 72px 1fr;
+    grid-auto-rows: 100%;
+    /*grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));*/
+}
+
+.top {
+    z-index: 2;
+    box-shadow: 0 5px 4px var(--sidebar_color);
+
+}
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+.innergrid {
+    justify-content: flex-start;
+    align-items: stretch;  
+}
+
+.sidebar {
+    background-color: var(--sidebar_color);
+}
+.channels {
+    background-color: var(--channel-color);
+}
+.content {
+    background-color: var(--content-color);
+}
+.profiles {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--profile-color);
+}
+.second-grid {
+    display: grid;
+    gap: 0;
+    height: 100%;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 48px 1fr;
+}
+/*
+.basic-grid .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #353535;
+    font-size: 3rem;
+    color: #fff;
+    box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    transition: all 500ms;
+    overflow: hidden;
+}*/
+
+.card:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.1);
+ }
