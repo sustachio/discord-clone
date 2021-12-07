@@ -2,7 +2,7 @@
 .dark-theme {
     --background-color: #202225;
 
-    --sidebar_color: #202225;
+    --sidebar-color: #202225;
     --channels-color: #2e3136;
     --content-color: #36393e;
     --profile-color: #282b2f;
@@ -10,6 +10,7 @@
     --channels-text-color: #8e9297;
 
     --scrollbar-thumb: #202225;
+    --border-color: rgba(32, 34, 37, 0.3)
 }
 .light-theme {
     --background-color: #fff;
@@ -21,7 +22,8 @@
 
     --channels-text-color: #6a7480;
 
-    --scrollbar-thumb: #4f545c;
+    --scrollbar-thumb: rgba(79,84,92,0.3);
+    --border-color: rgba(226, 229, 232, 0.1);
 }
 
 html, body {
@@ -92,7 +94,7 @@ body {
 }
 
 .sidebar {
-    background-color: var(--sidebar_color);
+    background-color: var(--sidebar-color);
 }
 .channels {
     background-color: var(--channels-color);
@@ -148,6 +150,6 @@ body {
 
  .top {
     z-index: 2;
-    box-shadow: 0 2px 4px var(--sidebar_color);
+    border-bottom: 2px solid var(--border-color);
     overflow: hidden;
 }
