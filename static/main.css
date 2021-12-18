@@ -26,6 +26,8 @@
     --border-color: rgba(226, 229, 232, 0.1);
 }
 
+
+
 html, body {
     --channels-size: 248px;
 
@@ -33,37 +35,6 @@ html, body {
     height: 100%;
     background-color: var(--background-color);
 }
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-.channels::-webkit-scrollbar-button {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-::-webkit-scrollbar-track {
-    border-color: transparent;
-    background-color: transparent;
-    border: 2px solid transparent;
-}
-
-::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    background-color: var(--scrollbar-thumb);
-    min-height: 40px;
-}
-/**/
-
 body {
     background: rgb(19, 19, 19);
     color: #fff;
@@ -72,42 +43,72 @@ body {
     padding: 0;
 }
 
+
+
 .main-grid {
     display: grid;
     gap: 0;
     height: 100%;
-    grid-template-columns: 72px 1fr;
-    grid-auto-rows: 100%;
+    grid-template-columns: 72px var(--channels-size) 1fr;
+    grid-auto-rows: 48px 1fr 52px;
+    grid-template-areas: 'sidebar channels-top content-top'
+                         'sidebar channels content'
+                         'sidebar profile content';
+}
+    .top {
+        z-index: 2;
+        border-bottom: 2px solid var(--border-color);
+        overflow: hidden;
+    }
+    .content {
+    background-color: var(--content-color);
+    overflow-y: scroll;
+    grid-area: content-top;
+    }
+        .content:not(.top){grid-area: content;}
+
+    .profile {
+        overflow: hidden;
+        bottom: 0;
+        background-color: var(--profile-color);
+        width: var(--channels-size);
+        border-top: 2px solid var(--content-color);
+
+        grid-area: profile;
+    }
+
     /*grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));*/
-}
 
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;   
-}
-.innergrid {
+    .sidebar {
+        background-color: var(--sidebar-color);
+        grid-area: sidebar;
+    }
+    .channels {
+        background-color: var(--channels-color);
+        grid-area: channels-top;
+    }
+        .channels:not(.top) {
+            overflow-y: scroll;
+            color: var(--channels-text-color);
+            padding-top: 16px;
+        
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+        
+            grid-area: channels;
+        }
+/*
     justify-content: flex-start;
     align-items: stretch;  
-}
+    gap: 0;
+    height: 100%;
+    grid-template-columns: var(--channels-size) 1fr;
+    grid-template-rows:  1fr;
+*/
 
-.sidebar {
-    background-color: var(--sidebar-color);
-}
-.channels {
-    background-color: var(--channels-color);
-}
-.channels:not(.top) {
-    overflow-y: scroll;
-    color: var(--channels-text-color);
-    padding-top: 16px;
 
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 500;
-}
+
 
 .channel {
     vertical-align: middle;
@@ -117,40 +118,37 @@ body {
     border-radius: 4px;
     height: 34px;
 }
-.hashtag {
-    margin-right: 6px;
-    width: 20px;
-    height: 20px;
-    height: inherit;
-    vertical-align: center;
-}
-.channel:hover {
-    background-color: rgba(79,84,92,0.16);
-}
+    .channel:hover {background-color: rgba(79,84,92,0.16);}
+    .hashtag {
+        margin-right: 6px;
+        width: 20px;
+        height: 20px;
+        height: inherit;
+        vertical-align: center;
+    }
 
-.content {
-    background-color: var(--content-color);
-    overflow-y: scroll;
-}
-.profile {
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    background-color: var(--profile-color);
-    width: var(--channels-size);
-    height: 52px;
-    border-top: 2px solid var(--content-color);
-}
-.second-grid {
-    display: grid;
-    gap: 0;
-    height: 100%;
-    grid-template-columns: var(--channels-size) 1fr;
-    grid-template-rows: 48px 1fr;
-}
 
- .top {
-    z-index: 2;
-    border-bottom: 2px solid var(--border-color);
-    overflow: hidden;
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+::-webkit-scrollbar-track {
+    border-color: transparent;
+    background-color: transparent;
+    border: 2px solid transparent;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: var(--scrollbar-thumb);
+    min-height: 40px;
 }
