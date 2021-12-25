@@ -111,12 +111,14 @@ body {
 
 
 .channel {
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+
     padding: 6px 0;
     padding-left: 8px;
     margin: 0 8px;
     border-radius: 4px;
-    height: 34px;
+    height: 20px;
 }
     .channel:hover {background-color: rgba(79,84,92,0.16);}
     .hashtag {
@@ -126,7 +128,9 @@ body {
         height: inherit;
         vertical-align: center;
     }
-    channel-content
+    .channel-content {
+        line-height: 20px
+    }
 
 
 ::-webkit-scrollbar {
