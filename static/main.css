@@ -8,9 +8,12 @@
     --profile-color: #282b2f;
 
     --channels-text-color: #8e9297;
+    --hashtag-color: #72767d;
 
     --scrollbar-thumb: #202225;
-    --border-color: rgba(32, 34, 37, 0.3)
+    --border-color: rgba(32, 34, 37, 0.3);
+
+    --server-seperater-color: hsla(0,0%,100%,0.06);
 }
 .light-theme {
     --background-color: #fff;
@@ -20,7 +23,7 @@
     --content-color: #fff;
     --profile-color: #eaedef;
 
-    --channels-text-color: #6a7480;
+    --channels-color: #6a7480;
 
     --scrollbar-thumb: rgba(79,84,92,0.3);
     --border-color: rgba(226, 229, 232, 0.1);
@@ -42,8 +45,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
 
 .main-grid {
     display: grid;
@@ -79,10 +80,6 @@ body {
 
     /*grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));*/
 
-    .sidebar {
-        background-color: var(--sidebar-color);
-        grid-area: sidebar;
-    }
     .channels {
         background-color: var(--channels-color);
         grid-area: channels-top;
@@ -107,9 +104,6 @@ body {
     grid-template-rows:  1fr;
 */
 
-
-
-
 .channel {
     display: flex;
     align-items: center;
@@ -122,15 +116,40 @@ body {
 }
     .channel:hover {background-color: rgba(79,84,92,0.16);}
     .hashtag {
+        display: block;
         margin-right: 6px;
         width: 20px;
         height: 20px;
         height: inherit;
-        vertical-align: center;
+        color: var(--hashtag-color);
     }
     .channel-content {
         line-height: 20px
     }
+
+.server-divider {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background-color: var(--server-seperater-color);
+}
+
+.server {
+    
+}
+    .server-ico {
+        width: 48px;
+        height: 48px;
+        border-radius: 24px;
+        object-fit: cover;
+    }
+.sidebar {
+    background-color: var(--sidebar-color);
+    grid-area: sidebar;
+    padding: 0 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 
 ::-webkit-scrollbar {
