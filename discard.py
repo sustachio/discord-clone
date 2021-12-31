@@ -13,10 +13,19 @@ channels = [
     }
 ]
 
+classes = [
+    {
+        "imgurl" : "https://www.w3schools.com/w3images/rocks.jpg"
+    },
+    {
+        "imgurl" : "https://www.w3schools.com/w3images/paris.jpg"
+    }
+]
+
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', channels=channels)
+    return render_template('home.html', channels=channels, classes=classes)
 
 #runs the app w/ debug (auto update)
 if __name__ == '__main__':

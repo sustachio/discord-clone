@@ -11,3 +11,13 @@
     </div>
   {% endfor %}
 {% endblock channels %}
+
+
+{% block classes %}
+  {% for class in classes %}
+    <div class="class">
+      <div class="class-bubble"></div>
+      <img class="class-ico" src="{{ class.imgurl }}">
+    </div>
+  {% endfor %}
+{% endblock classes %}
