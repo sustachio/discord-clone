@@ -15,9 +15,11 @@ channels = [
 
 classes = [
     {
+        "name" : "Rocky river",
         "imgurl" : "https://www.w3schools.com/w3images/rocks.jpg"
     },
     {
+        "name" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, molestias!",
         "imgurl" : "https://www.w3schools.com/w3images/paris.jpg"
     }
 ]

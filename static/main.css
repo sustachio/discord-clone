@@ -33,6 +33,7 @@
 
 html, body {
     --channels-size: 248px;
+    --course-name-indent: 5px;
 
     min-height: 100% !important;
     height: 100%;
@@ -104,10 +105,12 @@ body {
     grid-template-rows:  1fr;
 */
 
-.channel {
+.flex-mid {
     display: flex;
     align-items: center;
+}
 
+.channel {
     padding: 6px 0;
     padding-left: 8px;
     margin: 0 8px;
@@ -132,7 +135,7 @@ body {
     grid-area: sidebar;
     padding-bottom: 0;
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: visible;
 }    
     .sidebar-divider {
         height: 2px;
@@ -142,14 +145,16 @@ body {
     }
 
 .class {
-    display: flex;
-    align-items: center;
-
     width: auto;
     height: 48px;
+
+    margin: 8px 0;
 }   
-    .class:hover .class-ico { border-radius: 18px; }
-    .class:hover .class-bubble { width: 5px; height: 20px; }
+.class-ico:hover { border-radius: 18px; }
+.class-ico:hover + .class-bubble { width: 5px; height: 20px; }
+
+
+/* .class-ico:hover + .class-name { opacity: 1; } */
     .class-ico {
         position: absolute;
         left: 12px;
@@ -170,7 +175,42 @@ body {
         border-radius: 0px 5px 5px 0px;
         background-color: white;
         
+    } 
+    .class-name-container {
+        z-index: 3;
+        opacity: 0;
+        transition: opacity .1s;
     }
+        .class-ico:hover ~ .class-name-container { 
+            opacity: 1;
+        }
+    .class-name {
+        z-index: 4;
+        position: absolute;
+        left: calc(77px + var(--course-name-indent));
+
+        padding: 10px;
+        max-width: 170px;
+        border-radius: 5px;
+
+        font-weight: bold;
+        background-color: #18191c;
+        color: #d4d5d5;
+    }
+           .class-name-triangle {
+            content: "";
+            z-index: 3;
+
+            display: block;
+            position: absolute;
+            left: calc(72px + var(--course-name-indent));
+            transform: rotate(45deg);
+
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: #18191c;
+        } 
 
 
 
@@ -198,3 +238,5 @@ body {
     background-color: var(--scrollbar-thumb);
     min-height: 40px;
 }
+
+
